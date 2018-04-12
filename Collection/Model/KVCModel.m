@@ -38,7 +38,7 @@
 }
 
 - (void)dealloc{
-    [self removeObserver:self forKeyPath:@"items"];
+//    [self removeObserver:self forKeyPath:@"items"];
 }
 
 - (void)addItem{
