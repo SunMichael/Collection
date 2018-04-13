@@ -18,3 +18,11 @@
 - (void)removeItemObserver;
 
 @end
+
+
+@interface Product : NSObject
+
+@property(nonatomic ,copy) NSString *name;
+@property(nonatomic ,copy) NSNumber *price;
+
+@end

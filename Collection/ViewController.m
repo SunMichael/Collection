@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "CopyController.h"
 #import "KVCController.h"
+#import "DynamicController.h"
+#import "PropertyController.h"
+#import "RuntimeController.h"
 
 #import <objc/runtime.h>
 @interface ViewController ()
@@ -24,8 +27,9 @@
     [super viewDidLoad];
 
     self.title = @"代码集合";
-    ary = @[@"copy测试",@"KVC测试" ];
-    vcAry = @[@"CopyController",@"KVCController"];
+    ary = @[@"copy测试",@"KVC测试",@"dynamic测试",@"property测试", @"runtime测试"];
+    
+    vcAry = @[@"CopyController",@"KVCController",@"DynamicController",@"PropertyController",@"RuntimeController"];
     
 //    NSCache *cache = [[NSCache alloc]init];
 //    cache setObject:<#(nonnull id)#> forKey:<#(nonnull id)#>

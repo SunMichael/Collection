@@ -19,6 +19,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self kvcMethod];
+    [self operator];
 }
 
 - (void)kvcMethod{
@@ -50,6 +51,7 @@
     
     [model addItemObserver];  //此方法执行完items的内存地址和之前执行的会不同
     
+    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
@@ -59,6 +61,27 @@
 - (void)dealloc{
     [model removeObserver:self forKeyPath:@"name" context:nil];
     [model removeObserver:self forKeyPath:@"items" context:nil];
+}
+
+
+- (void)operator{
+    NSMutableArray *allAry = [NSMutableArray array];
+    for (NSInteger i = 1; i < 10 ; i++) {
+        Product *model = [Product new];
+        model.name = [NSString stringWithFormat:@"product%ld",i];
+        model.price = @(i);
+        [allAry addObject:model];
+    }
+    //集合操作符
+    id max = [allAry valueForKeyPath:@"@max.price"];
+    id count = [allAry valueForKeyPath:@"@count"];
+
+    //对象操作符
+    id ary = [allAry valueForKeyPath:@"unionOfObjects.name"];         //不去重
+    id sortAry = [allAry valueForKeyPath:@"distinctUnionOfObjects.name"];  //去重
+    
+    NSLog(@"operator : %@, %@ ,%@ ,%@",max ,count ,ary, sortAry);
+    
 }
 
 
@@ -80,6 +103,8 @@
  *  如果直接对类对象的集合items进行监听，会发现items改变前后内存地址不变(一般属性NSString这种会变)，这样KVO不会有监听返回。
  *  使用 mutableArrayValueForKey:来获取集合，再改变就能被监听
  
+ 
+ *  访问，修改私有属性的2种方式，KVC和runtime获取属性名使用object_setIvar
  */
 
 

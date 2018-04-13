@@ -17,6 +17,10 @@
 		0477C2E0207EF64100563991 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2DF207EF64100563991 /* User.m */; };
 		0477C2E4207F279D00563991 /* KVCController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2E3207F279D00563991 /* KVCController.m */; };
 		0477C2E7207F280C00563991 /* KVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2E6207F280C00563991 /* KVCModel.m */; };
+		0477C2EB208047A300563991 /* DynamicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2EA208047A300563991 /* DynamicController.m */; };
+		0477C2EE2080592700563991 /* PropertyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2ED2080592700563991 /* PropertyController.m */; };
+		0477C2F52080808B00563991 /* RuntimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2F42080808B00563991 /* RuntimeController.m */; };
+		0477C2F82080816E00563991 /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2F72080816E00563991 /* Robot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,14 @@
 		0477C2E3207F279D00563991 /* KVCController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVCController.m; sourceTree = "<group>"; };
 		0477C2E5207F280C00563991 /* KVCModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVCModel.h; sourceTree = "<group>"; };
 		0477C2E6207F280C00563991 /* KVCModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVCModel.m; sourceTree = "<group>"; };
+		0477C2E9208047A300563991 /* DynamicController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicController.h; sourceTree = "<group>"; };
+		0477C2EA208047A300563991 /* DynamicController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicController.m; sourceTree = "<group>"; };
+		0477C2EC2080592700563991 /* PropertyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyController.h; sourceTree = "<group>"; };
+		0477C2ED2080592700563991 /* PropertyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyController.m; sourceTree = "<group>"; };
+		0477C2F32080808B00563991 /* RuntimeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RuntimeController.h; sourceTree = "<group>"; };
+		0477C2F42080808B00563991 /* RuntimeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RuntimeController.m; sourceTree = "<group>"; };
+		0477C2F62080816E00563991 /* Robot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Robot.h; sourceTree = "<group>"; };
+		0477C2F72080816E00563991 /* Robot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Robot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,15 +82,12 @@
 		0477C2C4207B4E1900563991 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				0477C2E8207F5D2A00563991 /* Controller */,
 				0477C2E1207EF64E00563991 /* Model */,
 				0477C2C5207B4E1900563991 /* AppDelegate.h */,
 				0477C2C6207B4E1900563991 /* AppDelegate.m */,
 				0477C2C8207B4E1900563991 /* ViewController.h */,
 				0477C2C9207B4E1900563991 /* ViewController.m */,
-				0477C2DB207B4FEB00563991 /* CopyController.h */,
-				0477C2DC207B4FEB00563991 /* CopyController.m */,
-				0477C2E2207F279D00563991 /* KVCController.h */,
-				0477C2E3207F279D00563991 /* KVCController.m */,
 				0477C2CB207B4E1A00563991 /* Main.storyboard */,
 				0477C2CE207B4E1A00563991 /* Assets.xcassets */,
 				0477C2D0207B4E1A00563991 /* LaunchScreen.storyboard */,
@@ -95,8 +104,27 @@
 				0477C2DF207EF64100563991 /* User.m */,
 				0477C2E5207F280C00563991 /* KVCModel.h */,
 				0477C2E6207F280C00563991 /* KVCModel.m */,
+				0477C2F62080816E00563991 /* Robot.h */,
+				0477C2F72080816E00563991 /* Robot.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0477C2E8207F5D2A00563991 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0477C2DB207B4FEB00563991 /* CopyController.h */,
+				0477C2DC207B4FEB00563991 /* CopyController.m */,
+				0477C2E2207F279D00563991 /* KVCController.h */,
+				0477C2E3207F279D00563991 /* KVCController.m */,
+				0477C2E9208047A300563991 /* DynamicController.h */,
+				0477C2EA208047A300563991 /* DynamicController.m */,
+				0477C2EC2080592700563991 /* PropertyController.h */,
+				0477C2ED2080592700563991 /* PropertyController.m */,
+				0477C2F32080808B00563991 /* RuntimeController.h */,
+				0477C2F42080808B00563991 /* RuntimeController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,9 +202,13 @@
 				0477C2E0207EF64100563991 /* User.m in Sources */,
 				0477C2CA207B4E1900563991 /* ViewController.m in Sources */,
 				0477C2E4207F279D00563991 /* KVCController.m in Sources */,
+				0477C2EE2080592700563991 /* PropertyController.m in Sources */,
 				0477C2D5207B4E1A00563991 /* main.m in Sources */,
+				0477C2F52080808B00563991 /* RuntimeController.m in Sources */,
 				0477C2DD207B4FEB00563991 /* CopyController.m in Sources */,
+				0477C2F82080816E00563991 /* Robot.m in Sources */,
 				0477C2C7207B4E1900563991 /* AppDelegate.m in Sources */,
+				0477C2EB208047A300563991 /* DynamicController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
