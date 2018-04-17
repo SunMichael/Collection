@@ -11,7 +11,7 @@ this is an iOS knowledge collection.
 主要是查找过程，当key不存在对应的属性名时，会查找key，_key，iskey，_iskey这样名字的成员变量，再进行赋值
 
 ### 3.KVO的使用
-KVO可以对属性进行监听，如果需要对对象内的实例变量监听需要手动实现，在赋值时调用<code>[self willChangeValueForKey:@"age"]</code>和<code>[self didChangeValueForKey:@"age"]</code>
+KVO可以对属性进行监听，如果需要对对象内的实例变量监听需要手动实现，在赋值时调用<code>[self willChangeValueForKey:key]</code>和<code>[self didChangeValueForKey:key]</code>
 
 ### 4.property的修饰关键字区别
 copy修饰的属性，会重新生成一份不可变的拷贝，strong修饰的属性则是强引用指向同一个对象
