@@ -23,6 +23,7 @@
 }
 
 - (void)manualKVO{
+    //对于对象成员变量的监听，需要手动来实现
     model = [[ManualKVOModel alloc] init];
     model.name = @"sun";
     model.age = 18;
