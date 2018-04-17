@@ -13,6 +13,7 @@
 #import "PropertyController.h"
 #import "RuntimeController.h"
 #import "AutoreleaseController.h"
+#import "KVOController.h"
 
 #import <objc/runtime.h>
 @interface ViewController ()
@@ -28,10 +29,10 @@
     [super viewDidLoad];
 
     self.title = @"代码集合";
-    ary = @[@"copy测试",@"KVC测试",@"dynamic测试",
+    ary = @[@"copy测试",@"KVC测试",@"KVO测试",@"dynamic测试",
             @"property测试", @"runtime测试", @"autorelease测试"];
     
-    vcAry = @[@"CopyController",@"KVCController",@"DynamicController",
+    vcAry = @[@"CopyController",@"KVCController",@"KVOController" ,@"DynamicController",
               @"PropertyController",@"RuntimeController" ,@"AutoreleaseController"];
     
 //    NSCache *cache = [[NSCache alloc]init];
@@ -67,7 +68,6 @@
     vc.title = ary[indexPath.row];
     if ([vc  isKindOfClass:[PropertyController class]]) {
         PropertyController *pc = (PropertyController *)vc;
-        pc.mAry = @[@"A",@"B"];
         pc.ary = [NSMutableArray arrayWithObjects:@"b",@"c",nil];
     }
     [self.navigationController pushViewController:vc animated:YES];
