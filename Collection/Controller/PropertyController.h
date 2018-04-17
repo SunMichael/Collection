@@ -28,6 +28,8 @@
 @property (nonatomic ,weak) NSString *company;
 
 
+@property (nonatomic ,copy) NSMutableArray *mAry;
+@property (nonatomic ,copy) NSArray *ary;
 
 @end
 

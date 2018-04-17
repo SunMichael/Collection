@@ -12,7 +12,8 @@
 {
     NSString *_password;
     
-    NSString *_newName;
+//    NSString *_newName;
+    NSString *_isNewName;
 }
 
 //// KVO内部实现调用下面2个方法

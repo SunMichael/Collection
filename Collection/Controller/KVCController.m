@@ -26,7 +26,7 @@
     model = [KVCModel new];
     model.name = @"name";
     
-    [model  setValue:@"newName" forKey:@"newName"];
+    [model  setValue:@"newName" forKey:@"newName"];  //属性没有声明，找对应的成员变量赋值_xx,isxx等
     [model setValue:@"password" forKey:@"password"];
     
     NSString *name = [model valueForKey:@"newName"];

@@ -21,6 +21,7 @@
 		0477C2EE2080592700563991 /* PropertyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2ED2080592700563991 /* PropertyController.m */; };
 		0477C2F52080808B00563991 /* RuntimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2F42080808B00563991 /* RuntimeController.m */; };
 		0477C2F82080816E00563991 /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2F72080816E00563991 /* Robot.m */; };
+		04B180C22085D0780072A8A4 /* AutoreleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C12085D0770072A8A4 /* AutoreleaseController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		0477C2F42080808B00563991 /* RuntimeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RuntimeController.m; sourceTree = "<group>"; };
 		0477C2F62080816E00563991 /* Robot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Robot.h; sourceTree = "<group>"; };
 		0477C2F72080816E00563991 /* Robot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Robot.m; sourceTree = "<group>"; };
+		04B180C02085D0770072A8A4 /* AutoreleaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoreleaseController.h; sourceTree = "<group>"; };
+		04B180C12085D0770072A8A4 /* AutoreleaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoreleaseController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				0477C2ED2080592700563991 /* PropertyController.m */,
 				0477C2F32080808B00563991 /* RuntimeController.h */,
 				0477C2F42080808B00563991 /* RuntimeController.m */,
+				04B180C02085D0770072A8A4 /* AutoreleaseController.h */,
+				04B180C12085D0770072A8A4 /* AutoreleaseController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B180C22085D0780072A8A4 /* AutoreleaseController.m in Sources */,
 				0477C2E7207F280C00563991 /* KVCModel.m in Sources */,
 				0477C2E0207EF64100563991 /* User.m in Sources */,
 				0477C2CA207B4E1900563991 /* ViewController.m in Sources */,

@@ -25,8 +25,55 @@
     [self getMethodList];
     [self exchangeMethod];
     
+    [self objc_msgSend];
+    
     [self creatClass];
 }
+
+- (void)objc_msgSend{       //对象调用方法的流程源码在下面注释
+    NSString *string = nil;
+    string = [string stringByAppendingString:@"a"];
+}
+
+/*  ====   objc_msgSend 对nil对象发消息返回nil   ===
+ *
+ *
+ //向对象发送消息
+ id objc_msgSend(id self, SEL op, ...) {
+ if (!self) return nil;
+ IMP imp = class_getMethodImplementation(self->isa, SEL op);
+ imp(self, op, ...); //调用这个函数，伪代码...
+ }
+ 
+ //查找IMP
+ IMP class_getMethodImplementation(Class cls, SEL sel) {
+ if (!cls || !sel) return nil;
+ IMP imp = lookUpImpOrNil(cls, sel);
+ if (!imp) return _objc_msgForward; //_objc_msgForward 用于消息转发
+ return imp;
+ }
+ 
+ IMP lookUpImpOrNil(Class cls, SEL sel) {
+ if (!cls->initialize()) {
+ _class_initialize(cls);
+ }
+ 
+ Class curClass = cls;
+ IMP imp = nil;
+ do { //先查缓存,缓存没有时重建,仍旧没有则向父类查询
+ if (!curClass) break;
+ if (!curClass->cache) fill_cache(cls, curClass);
+ imp = cache_getImp(curClass, sel);
+ if (imp) break;
+ } while (curClass = curClass->superclass);
+ 
+ return imp;
+ }
+ *
+ *
+ */
+
+
 
 
 - (void)getIvarList{
@@ -205,4 +252,23 @@ struct objc_method_list {
     struct objc_method method_list[1]                        OBJC2_UNAVAILABLE;
 }
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

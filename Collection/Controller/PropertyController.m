@@ -24,6 +24,13 @@
     [self propertyMethod];
     
     [_author stringByAppendingString:@"DEF"];
+    
+//    if (_mAry.count > 0) {
+//        [_mAry removeLastObject];
+//        NSLog(@"mAry: %@",_mAry);
+//    }
+    
+    NSLog(@" ary class : %@ ",NSStringFromClass([_ary class]));
 }
 
 
