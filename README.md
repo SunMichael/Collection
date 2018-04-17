@@ -16,7 +16,7 @@ KVO可以对属性进行监听，如果需要对对象内的实例变量监听�
 ### 4.property的修饰关键字区别
 copy修饰的属性，会重新生成一份不可变的拷贝，strong修饰的属性则是强引用指向同一个对象
 
-### 5.对runtime的认识
+### 5.对Class，Objc的认识
 objc_class: 类结构体里面包含的主要内容，isa指针指向元类，super_class父类，objc_ivar_list成员变量列表，objc_method_list对象方法列表，objc_protocol_list协议列表以及缓存objc_cache。
 
 objc_object: 对象结构体里面包含的主要内容，isa指针指向它所属的类。
@@ -30,3 +30,5 @@ objc_method: 对象方法，里面包含 sel name , IMP method_imp , method_type
 
 2.在查找Class中的对象方法时，如果方法不存在则使用objc_msgForward进行消息转发
 
+### 7.ARC中autoreleasepool内对象的释放时机
+autoreleasepool的释放要结合它当前所在的runloop来判断，当runloop即将进入休眠阶段时autoreleasepool会被销毁
