@@ -1,4 +1,32 @@
 # Collection
 this is an iOS knowledge collection.
 
-关于一些iOS知识点的认知，代码实践
+关于一些iOS知识点的个人认知，代码实践
+
+
+### 1.copy和mutableCopy     
+需要注意对obj的拷贝属于深拷贝。对集合对象的拷贝存在浅拷贝和单层深拷贝
+
+### 2.KVC对对象属性修改的过程      
+主要是查找过程，当key不存在对应的属性名时，会查找key,_key,iskey,_iskey这样名字的成员变量，再进行赋值
+
+### 3.KVO的使用
+KVO可以对属性进行监听，如果需要对对象内的实例变量监听需要手动实现
+
+### 4.property的修饰关键字区别
+copy修饰的属性，会重新生成一份不可变的拷贝，strong修饰的属性则是强引用指向同一个对象
+
+### 5.对runtime的认识
+objc_class: 类结构体里面包含的主要内容，isa指针指向元类，super_class父类，objc_ivar_list成员变量列表，objc_method_list对象方法列表，objc_protocol_list协议列表以及缓存objc_cache。
+
+objc_object: 对象结构体里面包含的主要内容，isa指针指向它所属的类。
+
+objc_ivar: 实例变量，属性的实质是 property = ivar + setter + getter。
+
+objc_method: 对象方法，里面包含 sel name , IMP method_imp , method_types。
+
+### 6.[obj method]对象调用方法的过程
+1.首先会调用objc_msgSend方法，在实现中如果判断obj为nil则返回nil，如果不为nil则根据obj的isa指针，查找对应的类以及方法列表中是否存在method的实现class_getMethodImplementation
+
+2.在查找Class中的对象方法时，如果方法不存在则使用objc_msgForward进行消息转发
+
