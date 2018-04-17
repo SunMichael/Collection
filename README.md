@@ -26,9 +26,9 @@ objc_ivar: 实例变量，属性的实质是 property = ivar + setter + getter�
 objc_method: 对象方法，里面包含 sel name , IMP method_imp , method_types。
 
 ### 6.[obj method]对象调用方法的过程
-1.首先会调用objc_msgSend方法，在实现中如果判断obj为nil则返回nil，如果不为nil则根据obj的isa指针，查找对应的类以及方法列表中是否存在method的实现class_getMethodImplementation
+1.首先会调用objc_msgSend方法，在实现中如果判断obj为nil则返回nil，如果不为nil则根据obj的isa指针，查找对应的类以及方法列表中是否存在method的实现
 
-2.在查找Class中的对象方法时，如果方法不存在则使用objc_msgForward进行消息转发
+2.class_getMethodImplementation方法，在查找Class中的对象方法时，如果方法不存在则使用objc_msgForward进行消息转发
 
 ### 7.ARC中autoreleasepool内对象的释放时机
 autoreleasepool的释放要结合它当前所在的runloop来判断，当runloop即将进入休眠阶段时autoreleasepool会被销毁
