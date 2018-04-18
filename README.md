@@ -20,7 +20,7 @@ objc_class: 类结构体里面包含的主要内容，isa指针指向元类，su
 
 objc_object: 对象结构体里面包含的主要内容，isa指针指向它所属的类。
 
-objc_ivar: 实例变量，属性的实质是 property = ivar + setter + getter。
+objc_ivar: 实例变量，主要包括ivar_name和ivar_type，属性的实质是 property = ivar + setter + getter。
 
 objc_method: 对象方法，里面包含 sel name , IMP method_imp , method_types。
 
