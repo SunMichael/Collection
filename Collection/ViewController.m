@@ -15,6 +15,7 @@
 #import "AutoreleaseController.h"
 #import "KVOController.h"
 #import "BlockController.h"
+#import "GCDController.h"
 
 #import <objc/runtime.h>
 @interface ViewController ()
@@ -29,12 +30,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"代码集合";
+    self.title = @"知识点集合";
+    
     ary = @[@"copy测试",@"KVC测试",@"KVO测试",@"dynamic测试",
-            @"property测试", @"runtime测试", @"autorelease测试",@"block测试"];
+            @"property测试", @"runtime测试", @"autorelease测试",
+            @"block测试",@"thread测试"];
     
     vcAry = @[@"CopyController",@"KVCController",@"KVOController" ,@"DynamicController",
-              @"PropertyController",@"RuntimeController" ,@"AutoreleaseController",@"BlockController"];
+              @"PropertyController",@"RuntimeController" ,@"AutoreleaseController",
+              @"BlockController",@"GCDController"];
     
 //    NSCache *cache = [[NSCache alloc]init];
 //    cache setObject:<#(nonnull id)#> forKey:<#(nonnull id)#>
