@@ -11,6 +11,7 @@
 @interface GCDController ()
 {
     unsigned int count;
+    NSOperationQueue *queue;
 }
 @end
 
@@ -138,7 +139,7 @@
     [block addExecutionBlock:^{
         NSLog(@" task2 ");
     }];
-    [block start];
+//    [block start];
     
     //NSOperation类包含对线程的设置，和线程之前的依赖
     block.qualityOfService = NSQualityOfServiceBackground;
@@ -146,16 +147,21 @@
     [invocation addDependency:block];    //添加依赖
     
     
-    //Queue 会创建新线程，并执行Operation任务
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:invocation];
-//    [queue addOperations:@[block] waitUntilFinished:NO];
+    //Queue 会创建新线程，并执行Operation任务, 可能是n个任务n条线程，也可能是多个任务共用其中一个线程
+    queue = [[NSOperationQueue alloc] init];
+//    [queue addOperation:invocation];
+    [queue addOperations:@[block, invocation] waitUntilFinished:NO];
     [queue addOperationWithBlock:^{
         NSLog(@" queue thread: %@ ", [NSThread currentThread]);
     }];
     queue.qualityOfService = NSQualityOfServiceBackground;
 
     
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [queue cancelAllOperations];
 }
 
 - (void)task1{
