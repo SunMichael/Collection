@@ -147,8 +147,10 @@
     [invocation addDependency:block];    //添加依赖
     
     
-    //Queue 会创建新线程，并执行Operation任务, 可能是n个任务n条线程，也可能是多个任务共用其中一个线程
+    //Queue 会创建新线程，并执行Operation任务
     queue = [[NSOperationQueue alloc] init];
+    queue.maxConcurrentOperationCount = 1;   //设置为1时，是串行队列，大于1时是并行队列
+    queue.maxConcurrentOperationCount = 3;
 //    [queue addOperation:invocation];
     [queue addOperations:@[block, invocation] waitUntilFinished:NO];
     [queue addOperationWithBlock:^{
