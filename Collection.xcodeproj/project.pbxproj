@@ -24,6 +24,8 @@
 		04B180C22085D0780072A8A4 /* AutoreleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C12085D0770072A8A4 /* AutoreleaseController.m */; };
 		04B180C52085E5DA0072A8A4 /* KVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C42085E5DA0072A8A4 /* KVOController.m */; };
 		04B180C82085E6200072A8A4 /* ManualKVOModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C72085E6200072A8A4 /* ManualKVOModel.m */; };
+		04B180CB208721C10072A8A4 /* BlockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180CA208721C10072A8A4 /* BlockController.m */; };
+		04B180D02089C3240072A8A4 /* GCDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180CF2089C3240072A8A4 /* GCDController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,10 @@
 		04B180C42085E5DA0072A8A4 /* KVOController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOController.m; sourceTree = "<group>"; };
 		04B180C62085E6200072A8A4 /* ManualKVOModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManualKVOModel.h; sourceTree = "<group>"; };
 		04B180C72085E6200072A8A4 /* ManualKVOModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManualKVOModel.m; sourceTree = "<group>"; };
+		04B180C9208721C10072A8A4 /* BlockController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockController.h; sourceTree = "<group>"; };
+		04B180CA208721C10072A8A4 /* BlockController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockController.m; sourceTree = "<group>"; };
+		04B180CE2089C3240072A8A4 /* GCDController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDController.h; sourceTree = "<group>"; };
+		04B180CF2089C3240072A8A4 /* GCDController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCDController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,10 @@
 				0477C2F42080808B00563991 /* RuntimeController.m */,
 				04B180C02085D0770072A8A4 /* AutoreleaseController.h */,
 				04B180C12085D0770072A8A4 /* AutoreleaseController.m */,
+				04B180C9208721C10072A8A4 /* BlockController.h */,
+				04B180CA208721C10072A8A4 /* BlockController.m */,
+				04B180CE2089C3240072A8A4 /* GCDController.h */,
+				04B180CF2089C3240072A8A4 /* GCDController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -219,11 +229,13 @@
 				0477C2CA207B4E1900563991 /* ViewController.m in Sources */,
 				0477C2E4207F279D00563991 /* KVCController.m in Sources */,
 				0477C2EE2080592700563991 /* PropertyController.m in Sources */,
+				04B180CB208721C10072A8A4 /* BlockController.m in Sources */,
 				0477C2D5207B4E1A00563991 /* main.m in Sources */,
 				0477C2F52080808B00563991 /* RuntimeController.m in Sources */,
 				0477C2DD207B4FEB00563991 /* CopyController.m in Sources */,
 				0477C2F82080816E00563991 /* Robot.m in Sources */,
 				0477C2C7207B4E1900563991 /* AppDelegate.m in Sources */,
+				04B180D02089C3240072A8A4 /* GCDController.m in Sources */,
 				0477C2EB208047A300563991 /* DynamicController.m in Sources */,
 				04B180C82085E6200072A8A4 /* ManualKVOModel.m in Sources */,
 				04B180C52085E5DA0072A8A4 /* KVOController.m in Sources */,

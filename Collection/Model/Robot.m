@@ -20,9 +20,14 @@
     if (self) {
         version = @"1.1.0";
         systemOS = @"iOS";
+        
+        NSLog(@"Class %@ , %@",NSStringFromClass([self class]),NSStringFromClass([super class]));
+        // class方法只有NSObject类实现了，并且实现返回object_getClass(self)，所以返回的都是该对象的类
     }
     return self;
 }
+
+
 
 - (void)run{
     NSLog(@" robot running");

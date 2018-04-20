@@ -10,14 +10,14 @@
 
 @interface AutoreleaseController ()
 {
-    
+    __weak NSString *weak_string;
     __weak NSString *weak_auto_string;
     __weak NSString *weak_string2;
 }
 @end
 
 @implementation AutoreleaseController
-__weak NSString *weak_string = nil;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,7 +44,7 @@ __weak NSString *weak_string = nil;
 }
 
 - (void)autoreleasePool{
-    
+    //分线程会有新的runloop，线程结束时，autoreleasepool会被销毁
     @autoreleasepool {
         NSString *auto_string = [NSString stringWithFormat:@"CDE"];
         weak_auto_string = auto_string;
