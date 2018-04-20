@@ -20,7 +20,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self thread];
+    [self operation];
+//    [self thread];
 }
 
 
@@ -38,6 +39,7 @@
     }
 }
 
+//=============    NSThread部分      ==============
 
 - (void)thread{
     
@@ -51,13 +53,13 @@
     //并发问题，资源竞争
     count = 20;
     NSThread *sale1 = [[NSThread alloc] initWithTarget:self selector:@selector(thread1) object:nil];
-//    sale1.qualityOfService = NSQualityOfServiceBackground;
+    sale1.qualityOfService = NSQualityOfServiceBackground;
     sale1.name = @"售票1";
     [sale1 start];
     
     
     NSThread *sale2 = [[NSThread alloc] initWithTarget:self selector:@selector(thread2) object:nil];
-//    sale2.qualityOfService = NSQualityOfServiceBackground;
+    sale2.qualityOfService = NSQualityOfServiceBackground;
     [sale2  start];
     
     [self performSelector:@selector(saleTicket) onThread:sale1 withObject:nil waitUntilDone:NO];
@@ -80,7 +82,7 @@
 - (void)thread2{
     [NSThread currentThread].name = @"售票2";
     NSRunLoop *runloop = [NSRunLoop currentRunLoop];
-    [runloop runMode:NSRunLoopCommonModes beforeDate:[NSDate dateWithTimeIntervalSinceNow:10.f]]; //定义runloop结束时间
+    [runloop runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:2.f]]; //定义runloop结束时间,好像并不会自动cancel
     [runloop run];
 }
 
@@ -95,6 +97,7 @@
                 count--;
                 
                 NSLog(@" 车票剩余: %d current thread: %@  iscancle: %d", count, [NSThread currentThread].name,[[NSThread currentThread] isCancelled]);
+                [NSThread sleepForTimeInterval:1.f];
                 //            [self performSelector:@selector(saleTicket) withObject:nil];
             }else{
                 
@@ -114,6 +117,54 @@
 }
 
 
+
+
+//=============    NSOperation部分      ==============
+
+
+- (void)operation{
+
+    //2个NSOperation的子类，本身只有添加任务的方法
+    
+    NSInvocationOperation *invocation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(task1) object:nil];
+//    [invocation start];
+    
+
+    NSBlockOperation *block = [[NSBlockOperation alloc] init];
+    [block addExecutionBlock:^{
+        NSLog(@" block thread: %@ ", [NSThread currentThread]);
+    }];
+    
+    [block addExecutionBlock:^{
+        NSLog(@" task2 ");
+    }];
+    [block start];
+    
+    //NSOperation类包含对线程的设置，和线程之前的依赖
+    block.qualityOfService = NSQualityOfServiceBackground;
+    
+    [invocation addDependency:block];    //添加依赖
+    
+    
+    //Queue 会创建新线程，并执行Operation任务
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperation:invocation];
+//    [queue addOperations:@[block] waitUntilFinished:NO];
+    [queue addOperationWithBlock:^{
+        NSLog(@" queue thread: %@ ", [NSThread currentThread]);
+    }];
+    queue.qualityOfService = NSQualityOfServiceBackground;
+
+    
+}
+
+- (void)task1{
+    NSLog(@" task1 thread: %@ ", [NSThread currentThread]);
+}
+
+
+
+
 @end
 
 
@@ -122,7 +173,11 @@
  */
 
 
-
+/*
+ *  NSOperation 是个抽象类，不能用来封装操作，只能使用它的子类，NSInvocationOperation 和 NSBlockOperation
+    这2个类使用时，并不会主动开启新的线程，而是在当前线程中执行
+    NSOperation 和 NSThread 类似，除了方法的实现是在子类中， 并且对线程的控制也是只读，不能操作
+ */
 
 
 
