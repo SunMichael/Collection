@@ -8,12 +8,16 @@
 
 #import "GCDController.h"
 #import <pthread.h>
+#import <libkern/OSAtomic.h>
+#import <os/lock.h>
 
 @interface GCDController ()
 {
     unsigned int count;
     NSOperationQueue *queue;
     NSLock *lock;
+    os_unfair_lock_t unfairlock ;
+    __block OSSpinLock oslock;
 }
 @end
 
@@ -34,14 +38,20 @@ static pthread_mutex_t plock;
     pthread_mutex_init(&plock, &att);  //带着属性来初始化锁
     //    pthread_mutex_init(&plock, NULL);  //如果单纯的使用这个初始化方法，当一个线程多次对持有的锁操作时，会发生死锁
     pthread_mutexattr_destroy(&att);
-    [self pthread_mutex];
+    //    [self pthread_mutex];
     
     //NSLock 锁
     lock = [[NSLock alloc] init];
     
-//    [self thread];
+    //    [self thread];
     
-//    [self semaphore];
+    //    [self semaphore];
+    
+    //    oslock = OS_SPINLOCK_INIT;  //自旋锁不安全，已经被os_unfair_lock替代
+    
+    
+    //    unfairlock = &(OS_UNFAIR_LOCK_INIT);  //代替OSSPinLock 解决优先级反转问题
+    //    [self osspinLock];
 }
 
 
@@ -65,6 +75,27 @@ static pthread_mutex_t plock;
 
 - (void)osspinLock{
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        NSLog(@" low unfairlock ");
+        [self dosomething];
+        NSLog(@" low unfairunlock ");
+    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        NSLog(@" high unfairlock ");
+        [self dosomething];
+        NSLog(@" high unfairlock ");
+    });
+    
+}
+
+- (void)dosomething{
+    //    unfairlock = &(OS_UNFAIR_LOCK_INIT);
+    //    os_unfair_lock_lock(unfairlock);
+    //    OSSpinLockLock(oslock);
+    //    sleep(4);
+    //    OSSpinLockUnlock(oslock);
+    //    os_unfair_lock_unlock(unfairlock);
 }
 
 //=============    NSThread部分      ==============
@@ -296,13 +327,14 @@ static pthread_mutex_t plock;
  
  
  *       常见的线程锁
- *
+
  iOS 实现线程加锁有很多种方式。@synchronized、 NSLock 、 pthread_mutex（互斥锁） 、 dispatch_semaphore_t（互斥锁）、NSRecursiveLock（递归锁）、OSSpinLock(自旋锁)等
  
  互斥锁: 当Thread1占有资源后，Thread2会进入休眠，等待资源被释放，再唤醒Thread2执行
  自旋锁: 当Thread1占有资源后，Thread2会一直等待，资源被释放时立即执行，效率更高，但低优先级线程占有资源时，高优先级线程会一直等待，消耗CPU
  
-         死锁形成的4种原因
+ *       死锁形成的4种原因
+ 
  1.互斥条件。 资源在一段时间内只能由一个线程占有
  2.不可抢占。 在资源没被某个线程使用完之前，不能被另一个强行占有
  3.占有且申请。 线程已经占有一个资源，又申请新的资源
