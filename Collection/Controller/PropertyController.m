@@ -41,6 +41,23 @@
 }
 
 
+/**
+ 查找view自身所在的controller
+
+ @param view view description
+ @return return value description
+ */
+-(UIViewController *)findController:(UIView*)view
+{
+    id responder = view;
+    while (responder){
+        if ([responder isKindOfClass:[UIViewController class]]){
+            return responder;
+        }
+        responder = [responder nextResponder];
+    }
+    return nil;
+}
 
 @end
 

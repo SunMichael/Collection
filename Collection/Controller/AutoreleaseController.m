@@ -23,7 +23,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    NSString *string = [NSString stringWithFormat:@"ABC"];
+    __autoreleasing NSString *string = [NSString stringWithFormat:@"ABC"];
     weak_string = string;
     
 //    @autoreleasepool {
@@ -45,10 +45,13 @@
 
 - (void)autoreleasePool{
     //分线程会有新的runloop，线程结束时，autoreleasepool会被销毁
-    @autoreleasepool {
-        NSString *auto_string = [NSString stringWithFormat:@"CDE"];
-        weak_auto_string = auto_string;
-    }
+//    @autoreleasepool {
+//        NSString *auto_string = [NSString stringWithFormat:@"CDE"];
+//        weak_auto_string = auto_string;
+//    }
+    
+    __autoreleasing NSString *auto_string = [NSString stringWithFormat:@"CDE"];
+    weak_auto_string = auto_string;
     
 }
 

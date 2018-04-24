@@ -27,7 +27,7 @@ static pthread_mutex_t plock;
     //    [self operation];
     
     
-    //pthread_mutex  互斥锁
+    //pthread_mutex  互斥锁 ,可以用OC对象类型NSRecursiveLock
     pthread_mutexattr_t att;
     pthread_mutexattr_init(&att);
     pthread_mutexattr_settype(&att, PTHREAD_MUTEX_RECURSIVE);     //设置锁的类型为递归锁
@@ -38,6 +38,7 @@ static pthread_mutex_t plock;
     
     //NSLock 锁
     lock = [[NSLock alloc] init];
+    
 //    [self thread];
     
 //    [self semaphore];
@@ -59,6 +60,11 @@ static pthread_mutex_t plock;
 
 - (void)printValue:(NSInteger)value{
     NSLog(@" print value: %ld ",value);
+}
+
+
+- (void)osspinLock{
+    
 }
 
 //=============    NSThread部分      ==============
@@ -170,7 +176,7 @@ static pthread_mutex_t plock;
 
 
 - (void)pthread_mutex{
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{   //单个线程重复多次操作锁，要使用递归锁(先多次持有资源，最后再多次解锁)
         static void (^RecursiveBlock)(int);
         RecursiveBlock = ^(int value){
             pthread_mutex_lock(&plock);
@@ -179,6 +185,7 @@ static pthread_mutex_t plock;
                 RecursiveBlock(value - 1);
             }
             pthread_mutex_unlock(&plock);
+            NSLog(@" unlock ");
         };
         RecursiveBlock(10);
     });
@@ -290,10 +297,16 @@ static pthread_mutex_t plock;
  
  *       常见的线程锁
  *
- iOS 实现线程加锁有很多种方式。@synchronized、 NSLock 、 pthread_mutex 、 dispatch_semaphore_t等
+ iOS 实现线程加锁有很多种方式。@synchronized、 NSLock 、 pthread_mutex（互斥锁） 、 dispatch_semaphore_t（互斥锁）、NSRecursiveLock（递归锁）、OSSpinLock(自旋锁)等
  
+ 互斥锁: 当Thread1占有资源后，Thread2会进入休眠，等待资源被释放，再唤醒Thread2执行
+ 自旋锁: 当Thread1占有资源后，Thread2会一直等待，资源被释放时立即执行，效率更高，但低优先级线程占有资源时，高优先级线程会一直等待，消耗CPU
  
- 
+         死锁形成的4种原因
+ 1.互斥条件。 资源在一段时间内只能由一个线程占有
+ 2.不可抢占。 在资源没被某个线程使用完之前，不能被另一个强行占有
+ 3.占有且申请。 线程已经占有一个资源，又申请新的资源
+ 4.循环等待。  thread1等待thread2完成，thread2等待thread1完成
  */
 
 
