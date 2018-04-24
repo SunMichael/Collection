@@ -31,3 +31,12 @@ objc_method: 对象方法，里面包含 sel name , IMP method_imp , method_type
 
 ### 7.ARC中autoreleasepool内对象的释放时机
 autoreleasepool的释放要结合它当前所在的runloop来判断，当runloop即将进入休眠阶段时autoreleasepool会被销毁
+
+### 8.NSLock，pthread_mutex，dispatch_semaphore_t几种锁的使用
+1.区分互斥锁(pthread_mutex)和自旋锁(os_unfair_lock) 的区别。     
+
+2.其中pthread分为普通锁和递归锁，区别在于普通锁在某个线程反复操作资源锁时会造成死锁      
+
+
+
+
