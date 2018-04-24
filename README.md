@@ -32,7 +32,7 @@ objc_method: 对象方法，里面包含 sel name , IMP method_imp , method_type
 2.class_getMethodImplementation方法，在查找Class中的对象方法时，如果方法不存在则使用objc_msgForward进行消息转发
 
 ### 7.ARC中autoreleasepool内对象的释放时机
-autoreleasepool的释放要结合它当前所在的runloop来判断，当runloop即将进入休眠阶段时autoreleasepool会被销毁
+autoreleasepool的释放要结合它当前所在的runloop来判断，当子线程中的runloop即将进入休眠阶段时处在其中的autoreleasepool会被销毁。主线程中的释放池内的对象会一直存在。
 
 ### 8.NSLock，pthread_mutex，dispatch_semaphore_t几种锁的使用
 1.区分互斥锁(pthread_mutex)和自旋锁(os_unfair_lock) 的区别。     
