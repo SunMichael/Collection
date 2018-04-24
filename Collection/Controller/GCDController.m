@@ -7,37 +7,58 @@
 //
 
 #import "GCDController.h"
+#import <pthread.h>
 
 @interface GCDController ()
 {
     unsigned int count;
     NSOperationQueue *queue;
+    NSLock *lock;
 }
 @end
 
 @implementation GCDController
 
+static pthread_mutex_t plock;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    //    [self operation];
     
-    [self operation];
+    
+    //pthread_mutex  互斥锁
+    pthread_mutexattr_t att;
+    pthread_mutexattr_init(&att);
+    pthread_mutexattr_settype(&att, PTHREAD_MUTEX_RECURSIVE);     //设置锁的类型为递归锁
+    pthread_mutex_init(&plock, &att);  //带着属性来初始化锁
+    //    pthread_mutex_init(&plock, NULL);  //如果单纯的使用这个初始化方法，当一个线程多次对持有的锁操作时，会发生死锁
+    pthread_mutexattr_destroy(&att);
+    [self pthread_mutex];
+    
+    //NSLock 锁
+    lock = [[NSLock alloc] init];
 //    [self thread];
+    
+//    [self semaphore];
 }
 
 
 - (void)semaphore{
-    dispatch_semaphore_t sema = dispatch_semaphore_create(4);   //创建一个容量为4的semaphore
-    //多并发
+    dispatch_semaphore_t sema = dispatch_semaphore_create(1);   //创建一个容量为4的semaphore
+    //多线程，访问同一片资源容易发生数据错乱或者是数据安全问题，需要用锁来控制
     for (NSInteger i = 0; i < 40; i++) {
-        
-        dispatch_wait(sema, DISPATCH_TIME_FOREVER);   //消耗一个信号量
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            NSLog(@" async operation %ld ", i);
+            dispatch_wait(sema, DISPATCH_TIME_FOREVER);   //消耗一个信号量
             sleep(1.f);
+            [self printValue:i];
             dispatch_semaphore_signal(sema);    //新增一个信号量
         });
     }
+}
+
+- (void)printValue:(NSInteger)value{
+    NSLog(@" print value: %ld ",value);
 }
 
 //=============    NSThread部分      ==============
@@ -47,7 +68,7 @@
     NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(threadMethod:) object:nil];
     thread.qualityOfService = NSQualityOfServiceBackground;
     NSLog(@" thread start");
-//    [NSThread sleepForTimeInterval:2.f];   //线程暂停,会堵塞主线程 相当于sleep(2.f)
+    //    [NSThread sleepForTimeInterval:2.f];   //线程暂停,会堵塞主线程 相当于sleep(2.f)
     [thread start];
     NSLog(@" thread start1");
     
@@ -63,8 +84,8 @@
     sale2.qualityOfService = NSQualityOfServiceBackground;
     [sale2  start];
     
-    [self performSelector:@selector(saleTicket) onThread:sale1 withObject:nil waitUntilDone:NO];
-    [self performSelector:@selector(saleTicket) onThread:sale2 withObject:nil waitUntilDone:NO];
+    [self performSelector:@selector(saleTicket2) onThread:sale1 withObject:nil waitUntilDone:NO];
+    [self performSelector:@selector(saleTicket2) onThread:sale2 withObject:nil waitUntilDone:NO];
 }
 
 - (void)threadMethod:(id)sender{
@@ -110,6 +131,7 @@
                     [[NSThread currentThread] cancel];
                     CFRunLoopStop(CFRunLoopGetCurrent());     //结束runloop
                     NSLog(@" 线程结束手动结束: %@ ", [NSThread currentThread].description);
+                    break;
                 }
             }
         }
@@ -118,19 +140,62 @@
 }
 
 
+- (void)saleTicket2{
+    
+    while (1) {
+        //        [lock lock];
+        pthread_mutex_lock(&plock);
+        if (count > 0 ) {
+            count--;
+            
+            NSLog(@" 车票剩余: %d current thread: %@  iscancle: %d", count, [NSThread currentThread].name,[[NSThread currentThread] isCancelled]);
+            [NSThread sleepForTimeInterval:1.f];
+        }else{
+            
+            NSLog(@" 车票卖完 ");
+            if ([[NSThread currentThread] isCancelled]) {
+                NSLog(@" 线程结束: %@ ",[NSThread currentThread].description);
+                break;
+            }else {
+                [[NSThread currentThread] cancel];
+                CFRunLoopStop(CFRunLoopGetCurrent());     //结束runloop
+                NSLog(@" 线程结束手动结束: %@ ", [NSThread currentThread].description);
+                break;
+            }
+        }
+        //        [lock unlock];
+        pthread_mutex_unlock(&plock);
+    }
+}
+
+
+- (void)pthread_mutex{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        static void (^RecursiveBlock)(int);
+        RecursiveBlock = ^(int value){
+            pthread_mutex_lock(&plock);
+            if (value > 0) {
+                NSLog(@" value %d ",value);
+                RecursiveBlock(value - 1);
+            }
+            pthread_mutex_unlock(&plock);
+        };
+        RecursiveBlock(10);
+    });
+}
 
 
 //=============    NSOperation部分      ==============
 
 
 - (void)operation{
-
+    
     //2个NSOperation的子类，本身只有添加任务的方法
     
     NSInvocationOperation *invocation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(task1) object:nil];
-//    [invocation start];
+    //    [invocation start];
     
-
+    
     NSBlockOperation *block = [[NSBlockOperation alloc] init];
     [block addExecutionBlock:^{
         NSLog(@" block thread: %@ ", [NSThread currentThread]);
@@ -139,7 +204,7 @@
     [block addExecutionBlock:^{
         NSLog(@" task2 ");
     }];
-//    [block start];
+    //    [block start];
     
     //NSOperation类包含对线程的设置，和线程之前的依赖
     block.qualityOfService = NSQualityOfServiceBackground;
@@ -149,17 +214,21 @@
     
     //Queue 会创建新线程，并执行Operation任务
     queue = [[NSOperationQueue alloc] init];
-    queue.maxConcurrentOperationCount = 1;   //设置为1时，是串行队列，大于1时是并行队列
+    queue.maxConcurrentOperationCount = 1;   //设置最大并发数为1时，是串行队列，大于1时是并行队列
     queue.maxConcurrentOperationCount = 3;
-//    [queue addOperation:invocation];
+    //    [queue addOperation:invocation];
     [queue addOperations:@[block, invocation] waitUntilFinished:NO];
     [queue addOperationWithBlock:^{
         NSLog(@" queue thread: %@ ", [NSThread currentThread]);
     }];
     queue.qualityOfService = NSQualityOfServiceBackground;
-
+    
     
 }
+
+
+
+
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -183,8 +252,8 @@
 
 /*
  *  NSOperation 是个抽象类，不能用来封装操作，只能使用它的子类，NSInvocationOperation 和 NSBlockOperation
-    这2个类使用时，并不会主动开启新的线程，而是在当前线程中执行
-    NSOperation 和 NSThread 类似，除了方法的实现是在子类中， 并且对线程的控制也是只读，不能操作
+ 这2个类使用时，并不会主动开启新的线程，而是在当前线程中执行
+ NSOperation 和 NSThread 类似，除了方法的实现是在子类中， 并且对线程的控制也是只读，不能操作
  */
 
 
@@ -218,8 +287,13 @@
  
  同一个进程内的线程共享进程的所有资源;
  
+ 
+ *       常见的线程锁
  *
- *
+ iOS 实现线程加锁有很多种方式。@synchronized、 NSLock 、 pthread_mutex 、 dispatch_semaphore_t等
+ 
+ 
+ 
  */
 
 
