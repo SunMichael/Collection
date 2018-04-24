@@ -16,7 +16,9 @@ KVO可以对属性进行监听，如果需要对对象内的实例变量监听�
 copy修饰的属性，会重新生成一份不可变的拷贝，strong修饰的属性则是强引用指向同一个对象
 
 ### 5.对Class，Objc的认识
-objc_class: 类结构体里面包含的主要内容，isa指针指向元类，super_class父类，objc_ivar_list成员变量列表，objc_method_list对象方法列表，objc_protocol_list协议列表以及缓存objc_cache。
+objc_class: 类结构体里面包含的主要内容，isa指针指向元类，super_class父类，objc_ivar_list成员变量列表，objc_method_list对象方法列表。
+
+objc_protocol_list协议列表以及缓存objc_cache。
 
 objc_object: 对象结构体里面包含的主要内容，isa指针指向它所属的类。
 
