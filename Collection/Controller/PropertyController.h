@@ -25,6 +25,7 @@
 //special
 
 @property (nonatomic ,assign) NSString *author;  //在使用时，会提示__unsafe
+@property (nonatomic ,assign) NSMutableArray *unsafeAry;
 @property (nonatomic ,weak) NSString *company;
 
 

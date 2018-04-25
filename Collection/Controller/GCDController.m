@@ -56,7 +56,7 @@ static pthread_mutex_t plock;
 
 
 - (void)semaphore{
-    dispatch_semaphore_t sema = dispatch_semaphore_create(1);   //创建一个容量为4的semaphore
+    dispatch_semaphore_t sema = dispatch_semaphore_create(1);   //创建一个容量为1的semaphore，为1时是同步
     //多线程，访问同一片资源容易发生数据错乱或者是数据安全问题，需要用锁来控制
     for (NSInteger i = 0; i < 40; i++) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -328,7 +328,7 @@ static pthread_mutex_t plock;
  
  *       常见的线程锁
 
- iOS 实现线程加锁有很多种方式。@synchronized、 NSLock 、 pthread_mutex（互斥锁） 、 dispatch_semaphore_t（互斥锁）、NSRecursiveLock（递归锁）、OSSpinLock(自旋锁)等
+ iOS 实现线程加锁有很多种方式。@synchronized（条件锁）、 NSLock（普通锁） 、 pthread_mutex（互斥锁） 、 dispatch_semaphore_t（互斥锁）、NSRecursiveLock（递归锁）、OSSpinLock(自旋锁)等
  
  互斥锁: 当Thread1占有资源后，Thread2会进入休眠，等待资源被释放，再唤醒Thread2执行
  自旋锁: 当Thread1占有资源后，Thread2会一直等待，资源被释放时立即执行，效率更高，但低优先级线程占有资源时，高优先级线程会一直等待，消耗CPU

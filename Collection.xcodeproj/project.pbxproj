@@ -29,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0461C67E2090861900EA04F2 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		0477C2C2207B4E1900563991 /* Collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0477C2C5207B4E1900563991 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0477C2C6207B4E1900563991 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -108,6 +109,7 @@
 				0477C2D0207B4E1A00563991 /* LaunchScreen.storyboard */,
 				0477C2D3207B4E1A00563991 /* Info.plist */,
 				0477C2D4207B4E1A00563991 /* main.m */,
+				0461C67E2090861900EA04F2 /* config.h */,
 			);
 			path = Collection;
 			sourceTree = "<group>";

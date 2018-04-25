@@ -23,10 +23,13 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     
-//    [self aryCopyMethod];
+    [self aryCopyMethod];
 //    [self maryCopyMethod];
     
     [self copyUserMethod];
+    
+    [self aryCopy];
+    [self stringCopy];
 }
 
 - (void)aryCopyMethod{
@@ -91,6 +94,37 @@
 }
 
 
+/**
+ 数组的深浅拷贝
+ */
+- (void)aryCopy{
+    NSMutableArray *allAry = [NSMutableArray array];
+    for (NSInteger i = 0; i < 3; i++) {
+        User *model = [User new];
+        model.name = [NSString stringWithFormat:@"%ld",(long)i];
+        [allAry addObject:model];
+        NSLog(@" model %p ", model);
+    }
+    
+    NSMutableArray *copyAry = [allAry copy];
+    NSLog(@" %p ,  %p ", allAry, copyAry[0]);
+    
+    NSMutableArray *copyAry2= [[NSMutableArray alloc] initWithArray:allAry copyItems:YES];
+    NSLog(@" %p ,  %p ", allAry, copyAry2[0]);
+}
+
+
+/**
+  taggedPointer
+ */
+- (void)stringCopy{
+    NSString *string = @"a";
+    NSString *string2 = string;
+    NSLog(@" %p , %p ",string ,string2);
+    string = nil;
+    NSLog(@" %@ , %p ",[string stringByAppendingString:@"x"] ,[string2 stringByAppendingString:@"a"]);
+}
+
 /*
  *  总结: 在对集合的 copy（指针复制。共享一片内存地址） mutableCopy（会产生新的内存地址）
  
@@ -107,6 +141,8 @@
  *  在对自定义class对象copy时是单层深复制(和可变集合一样)，会产生新的内存地址，但对象的属性指向的是同一个
  
  */
+
+
 
 
 @end

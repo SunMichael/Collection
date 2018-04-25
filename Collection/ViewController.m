@@ -74,6 +74,8 @@
     if ([vc  isKindOfClass:[PropertyController class]]) {
         PropertyController *pc = (PropertyController *)vc;
         pc.ary = [NSMutableArray arrayWithObjects:@"b",@"c",nil];
+//        pc.author = [[NSString alloc] init];
+//        pc.unsafeAry = [[NSMutableArray alloc] init];
     }
     [self.navigationController pushViewController:vc animated:YES];
 
