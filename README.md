@@ -35,9 +35,38 @@ objc_method: 对象方法，里面包含 sel name , IMP method_imp , method_type
 autoreleasepool的释放要结合它当前所在的runloop来判断，当子线程中的runloop即将进入休眠阶段时处在其中的autoreleasepool会被销毁。主线程中的释放池内的对象会一直存在。
 
 ### 8.NSLock，pthread_mutex，dispatch_semaphore_t几种锁的使用
-1.区分互斥锁(pthread_mutex)和自旋锁(os_unfair_lock) 的区别。     
+1.区分互斥锁(pthread_mutex)和自旋锁(os_unfair_lock，会一直循环等待，消耗CPU时间) 的区别。     
 
 2.其中pthread分为普通锁和递归锁，区别在于普通锁在某个线程反复操作资源锁时会造成死锁      
+
+
+
+### 9.iOS中进程之间的几种通信方式
+1.app内设置URL Scheme
+
+2.keychain保存数据，但需要是同一开发者账号下的不同app
+
+3.UIPasteboard粘贴板
+
+4.UIActivityViewController，不同app之间发送数据
+
+5.UIDocumentInteractionController，主要用来传输文档
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
