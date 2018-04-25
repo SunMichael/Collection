@@ -52,10 +52,14 @@ autoreleasepool的释放要结合它当前所在的runloop来判断，当子线�
 
 5.UIDocumentInteractionController，主要用来传输文档
 
+### 10.线程同步的几种解决方式（GCD）
+1.dispatch_group和dispatch_group_notify组合使用
 
+2.dispatch_barrier配合一个自定义的同步队列
 
+3.dispatch_semaphore使用信号量来控制线程的执行顺序
 
-
+还有其他各种锁也可以实现
 
 
 
