@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface Robot : NSObject
-
+{
+    NSInteger num;
+}
 @property(nonatomic ,copy) NSString *name;
 @property(nonatomic ,copy) NSString *company;
 

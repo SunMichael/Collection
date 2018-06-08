@@ -10,8 +10,8 @@
 #define config_h
 
 
-#define TLog(_var) ({ NSString *name = @#_var; NSLog(@"%@: %@ -> %p : %@  %d", name, [_var class], _var, _var, (int)CFGetRetainCount((__bridge CFTypeRef)(name))); })
+#define TLog(_var) ({ NSString *name = @#_var; NSLog(@"%@: %@ -> %p : %@  %d", name, [_var class], _var, _var, (int)[_var valueForKey:@"retainCount"]); })
 
 
-
+#define RetainCount(var) (NSLog(@"retain count: %@", [var valueForKey:@"retainCount"]));
 #endif /* config_h */

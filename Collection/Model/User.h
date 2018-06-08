@@ -14,6 +14,6 @@
 @property(nonatomic, assign) int age;
 @property(nonatomic, strong) NSString *location;
 
-
+@property(nonatomic, strong) NSMutableString *mString;
 
 @end

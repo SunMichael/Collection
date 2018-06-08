@@ -22,6 +22,7 @@
 {
     NSArray *ary;
     NSArray *vcAry;
+    NSString *name;
 }
 @end
 
@@ -31,24 +32,21 @@
     [super viewDidLoad];
 
     self.title = @"知识点集合";
+    name = @"name";
     
-    ary = @[@"copy测试",@"KVC测试",@"KVO测试",@"dynamic测试",
-            @"property测试", @"runtime测试", @"autorelease测试",
-            @"block测试",@"thread测试"];
+    ary = @[@"copy_demo",@"KVC_demo",@"KVO_demo",@"dynamic_demo",
+            @"property_demo", @"runtime_demo", @"autorelease_demo",
+            @"block_demo",@"thread_demo"];
     
     vcAry = @[@"CopyController",@"KVCController",@"KVOController" ,@"DynamicController",
               @"PropertyController",@"RuntimeController" ,@"AutoreleaseController",
-              @"BlockController",@"GCDController"];
+              @"BlockController",@"GCDController" ];
+#ifdef TARGETS_TEST
+    self.title = @"target test";
+#endif
     
-//    NSCache *cache = [[NSCache alloc]init];
-//    cache setObject:<#(nonnull id)#> forKey:<#(nonnull id)#>
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -73,12 +71,20 @@
     vc.title = ary[indexPath.row];
     if ([vc  isKindOfClass:[PropertyController class]]) {
         PropertyController *pc = (PropertyController *)vc;
-        pc.ary = [NSMutableArray arrayWithObjects:@"b",@"c",nil];
-//        pc.author = [[NSString alloc] init];
-//        pc.unsafeAry = [[NSMutableArray alloc] init];
+        pc.name = name;
+        name = @"newname";
     }
     [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40.f;
+}
+
+
+- (void)viewDidAppear:(BOOL)animated{
+    NSLog(@" name %@ , %p " ,name ,name);
 }
 
 @end

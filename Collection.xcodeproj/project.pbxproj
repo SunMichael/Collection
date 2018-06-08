@@ -21,11 +21,31 @@
 		0477C2EE2080592700563991 /* PropertyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2ED2080592700563991 /* PropertyController.m */; };
 		0477C2F52080808B00563991 /* RuntimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2F42080808B00563991 /* RuntimeController.m */; };
 		0477C2F82080816E00563991 /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2F72080816E00563991 /* Robot.m */; };
+		04919C8E20B7ED28000148E1 /* AutoreleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C12085D0770072A8A4 /* AutoreleaseController.m */; };
+		04919C8F20B7ED28000148E1 /* KVCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2E6207F280C00563991 /* KVCModel.m */; };
+		04919C9020B7ED28000148E1 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2DF207EF64100563991 /* User.m */; };
+		04919C9120B7ED28000148E1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2C9207B4E1900563991 /* ViewController.m */; };
+		04919C9220B7ED28000148E1 /* KVCController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2E3207F279D00563991 /* KVCController.m */; };
+		04919C9320B7ED28000148E1 /* PropertyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2ED2080592700563991 /* PropertyController.m */; };
+		04919C9420B7ED28000148E1 /* BlockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180CA208721C10072A8A4 /* BlockController.m */; };
+		04919C9520B7ED28000148E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2D4207B4E1A00563991 /* main.m */; };
+		04919C9620B7ED28000148E1 /* RuntimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2F42080808B00563991 /* RuntimeController.m */; };
+		04919C9720B7ED28000148E1 /* CopyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2DC207B4FEB00563991 /* CopyController.m */; };
+		04919C9820B7ED28000148E1 /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2F72080816E00563991 /* Robot.m */; };
+		04919C9920B7ED28000148E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2C6207B4E1900563991 /* AppDelegate.m */; };
+		04919C9A20B7ED28000148E1 /* GCDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180CF2089C3240072A8A4 /* GCDController.m */; };
+		04919C9B20B7ED28000148E1 /* DynamicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477C2EA208047A300563991 /* DynamicController.m */; };
+		04919C9C20B7ED28000148E1 /* ManualKVOModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C72085E6200072A8A4 /* ManualKVOModel.m */; };
+		04919C9D20B7ED28000148E1 /* KVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C42085E5DA0072A8A4 /* KVOController.m */; };
+		04919CA020B7ED28000148E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0477C2D0207B4E1A00563991 /* LaunchScreen.storyboard */; };
+		04919CA120B7ED28000148E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0477C2CE207B4E1A00563991 /* Assets.xcassets */; };
+		04919CA220B7ED28000148E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0477C2CB207B4E1A00563991 /* Main.storyboard */; };
 		04B180C22085D0780072A8A4 /* AutoreleaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C12085D0770072A8A4 /* AutoreleaseController.m */; };
 		04B180C52085E5DA0072A8A4 /* KVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C42085E5DA0072A8A4 /* KVOController.m */; };
 		04B180C82085E6200072A8A4 /* ManualKVOModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180C72085E6200072A8A4 /* ManualKVOModel.m */; };
 		04B180CB208721C10072A8A4 /* BlockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180CA208721C10072A8A4 /* BlockController.m */; };
 		04B180D02089C3240072A8A4 /* GCDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B180CF2089C3240072A8A4 /* GCDController.m */; };
+		04D451F320BE99030093498B /* WeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D451F220BE99010093498B /* WeakMutableArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +76,8 @@
 		0477C2F42080808B00563991 /* RuntimeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RuntimeController.m; sourceTree = "<group>"; };
 		0477C2F62080816E00563991 /* Robot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Robot.h; sourceTree = "<group>"; };
 		0477C2F72080816E00563991 /* Robot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Robot.m; sourceTree = "<group>"; };
+		04919CA620B7ED28000148E1 /* Collection test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Collection test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04919CA720B7ED2D000148E1 /* Collection test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Collection test-Info.plist"; path = "/Users/mac/Documents/github code/Collection/Collection test-Info.plist"; sourceTree = "<absolute>"; };
 		04B180C02085D0770072A8A4 /* AutoreleaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoreleaseController.h; sourceTree = "<group>"; };
 		04B180C12085D0770072A8A4 /* AutoreleaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoreleaseController.m; sourceTree = "<group>"; };
 		04B180C32085E5DA0072A8A4 /* KVOController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVOController.h; sourceTree = "<group>"; };
@@ -66,10 +88,19 @@
 		04B180CA208721C10072A8A4 /* BlockController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockController.m; sourceTree = "<group>"; };
 		04B180CE2089C3240072A8A4 /* GCDController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDController.h; sourceTree = "<group>"; };
 		04B180CF2089C3240072A8A4 /* GCDController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCDController.m; sourceTree = "<group>"; };
+		04D451F120BE99010093498B /* WeakMutableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeakMutableArray.h; sourceTree = "<group>"; };
+		04D451F220BE99010093498B /* WeakMutableArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeakMutableArray.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0477C2BF207B4E1900563991 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04919C9E20B7ED28000148E1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -84,6 +115,7 @@
 			children = (
 				0477C2C4207B4E1900563991 /* Collection */,
 				0477C2C3207B4E1900563991 /* Products */,
+				04919CA720B7ED2D000148E1 /* Collection test-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				0477C2C2207B4E1900563991 /* Collection.app */,
+				04919CA620B7ED28000148E1 /* Collection test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +158,8 @@
 				04B180C72085E6200072A8A4 /* ManualKVOModel.m */,
 				0477C2F62080816E00563991 /* Robot.h */,
 				0477C2F72080816E00563991 /* Robot.m */,
+				04D451F120BE99010093498B /* WeakMutableArray.h */,
+				04D451F220BE99010093498B /* WeakMutableArray.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +209,23 @@
 			productReference = 0477C2C2207B4E1900563991 /* Collection.app */;
 			productType = "com.apple.product-type.application";
 		};
+		04919C8C20B7ED28000148E1 /* Collection test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04919CA320B7ED28000148E1 /* Build configuration list for PBXNativeTarget "Collection test" */;
+			buildPhases = (
+				04919C8D20B7ED28000148E1 /* Sources */,
+				04919C9E20B7ED28000148E1 /* Frameworks */,
+				04919C9F20B7ED28000148E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Collection test";
+			productName = Collection;
+			productReference = 04919CA620B7ED28000148E1 /* Collection test.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -185,6 +237,9 @@
 				TargetAttributes = {
 					0477C2C1207B4E1900563991 = {
 						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					04919C8C20B7ED28000148E1 = {
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -203,6 +258,7 @@
 			projectRoot = "";
 			targets = (
 				0477C2C1207B4E1900563991 /* Collection */,
+				04919C8C20B7ED28000148E1 /* Collection test */,
 			);
 		};
 /* End PBXProject section */
@@ -218,6 +274,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04919C9F20B7ED28000148E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04919CA020B7ED28000148E1 /* LaunchScreen.storyboard in Resources */,
+				04919CA120B7ED28000148E1 /* Assets.xcassets in Resources */,
+				04919CA220B7ED28000148E1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -229,6 +295,7 @@
 				0477C2E7207F280C00563991 /* KVCModel.m in Sources */,
 				0477C2E0207EF64100563991 /* User.m in Sources */,
 				0477C2CA207B4E1900563991 /* ViewController.m in Sources */,
+				04D451F320BE99030093498B /* WeakMutableArray.m in Sources */,
 				0477C2E4207F279D00563991 /* KVCController.m in Sources */,
 				0477C2EE2080592700563991 /* PropertyController.m in Sources */,
 				04B180CB208721C10072A8A4 /* BlockController.m in Sources */,
@@ -241,6 +308,29 @@
 				0477C2EB208047A300563991 /* DynamicController.m in Sources */,
 				04B180C82085E6200072A8A4 /* ManualKVOModel.m in Sources */,
 				04B180C52085E5DA0072A8A4 /* KVOController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04919C8D20B7ED28000148E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04919C8E20B7ED28000148E1 /* AutoreleaseController.m in Sources */,
+				04919C8F20B7ED28000148E1 /* KVCModel.m in Sources */,
+				04919C9020B7ED28000148E1 /* User.m in Sources */,
+				04919C9120B7ED28000148E1 /* ViewController.m in Sources */,
+				04919C9220B7ED28000148E1 /* KVCController.m in Sources */,
+				04919C9320B7ED28000148E1 /* PropertyController.m in Sources */,
+				04919C9420B7ED28000148E1 /* BlockController.m in Sources */,
+				04919C9520B7ED28000148E1 /* main.m in Sources */,
+				04919C9620B7ED28000148E1 /* RuntimeController.m in Sources */,
+				04919C9720B7ED28000148E1 /* CopyController.m in Sources */,
+				04919C9820B7ED28000148E1 /* Robot.m in Sources */,
+				04919C9920B7ED28000148E1 /* AppDelegate.m in Sources */,
+				04919C9A20B7ED28000148E1 /* GCDController.m in Sources */,
+				04919C9B20B7ED28000148E1 /* DynamicController.m in Sources */,
+				04919C9C20B7ED28000148E1 /* ManualKVOModel.m in Sources */,
+				04919C9D20B7ED28000148E1 /* KVOController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +488,41 @@
 			};
 			name = Release;
 		};
+		04919CA420B7ED28000148E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C8G87XC4N7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					TARGETS_TEST,
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Collection test-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = yizhenjia.com.Collection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04919CA520B7ED28000148E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C8G87XC4N7;
+				INFOPLIST_FILE = "$(SRCROOT)/Collection test-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = yizhenjia.com.Collection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -415,6 +540,15 @@
 			buildConfigurations = (
 				0477C2D9207B4E1A00563991 /* Debug */,
 				0477C2DA207B4E1A00563991 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04919CA320B7ED28000148E1 /* Build configuration list for PBXNativeTarget "Collection test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04919CA420B7ED28000148E1 /* Debug */,
+				04919CA520B7ED28000148E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

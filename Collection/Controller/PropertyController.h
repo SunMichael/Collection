@@ -17,6 +17,11 @@
 
 //normal
 @property (nonatomic ,copy) NSString *name;
+@property (nonatomic ,strong) NSString *sname;
+@property (nonatomic ,copy) NSMutableString *cmName;
+@property (nonatomic ,strong) NSMutableString *smName;
+
+
 @property (nonatomic ,assign) NSInteger number;
 @property (nonatomic ,strong) UIImage *image;
 @property (nonatomic ,weak) id <ActionDelegate> delegate;
@@ -29,8 +34,12 @@
 @property (nonatomic ,weak) NSString *company;
 
 
-@property (nonatomic ,copy) NSMutableArray *mAry;
-@property (nonatomic ,copy) NSArray *ary;
+//copy 和 strong 测试
+@property (nonatomic ,copy) NSMutableArray *cmAry;
+@property (nonatomic ,strong) NSMutableArray *smAry;
+
+@property (nonatomic ,copy) NSArray *cAry;
+@property (nonatomic ,strong) NSArray *sAry;
 
 @end
 

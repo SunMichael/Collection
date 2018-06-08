@@ -15,8 +15,13 @@
     user.age = self.age;
     user.name = self.name;
     user.location = self.location;
-    
+    user.mString = self.mString;
     return user;
+}
+
+
+- (void)dealloc{
+    NSLog(@" user dealloc...");
 }
 
 @end

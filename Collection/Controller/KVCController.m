@@ -67,7 +67,7 @@
 - (void)operator{
     NSMutableArray *allAry = [NSMutableArray array];
     for (NSInteger i = 1; i < 10 ; i++) {
-        Product *model = [Product new];
+        Product *model = [Product new]; 
         model.name = [NSString stringWithFormat:@"product%ld",i];
         model.price = @(i);
         [allAry addObject:model];
@@ -77,8 +77,8 @@
     id count = [allAry valueForKeyPath:@"@count"];
 
     //对象操作符
-    id ary = [allAry valueForKeyPath:@"unionOfObjects.name"];         //不去重
-    id sortAry = [allAry valueForKeyPath:@"distinctUnionOfObjects.name"];  //去重
+    id ary = [allAry valueForKeyPath:@"@unionOfObjects.name"];         //不去重
+    id sortAry = [allAry valueForKeyPath:@"@distinctUnionOfObjects.name"];  //去重
     
     NSLog(@"operator : %@, %@ ,%@ ,%@",max ,count ,ary, sortAry);
     

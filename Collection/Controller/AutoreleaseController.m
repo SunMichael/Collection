@@ -7,12 +7,17 @@
 //
 
 #import "AutoreleaseController.h"
+#import "User.h"
+#import "WeakMutableArray.h"
+#import "config.h"
 
 @interface AutoreleaseController ()
 {
     __weak NSString *weak_string;
     __weak NSString *weak_auto_string;
     __weak NSString *weak_string2;
+    
+    NSArray *ary;
 }
 @end
 
@@ -41,6 +46,71 @@
     NSLog(@" __weak string view load : %@ , %@ ,%@  ", weak_string , weak_auto_string ,weak_string2);
     
     [self performSelectorInBackground:@selector(autoreleasePool) withObject:nil];
+    
+    
+    [self arrayRetainObj];
+    [self testWeakRelease];
+    
+    [self objPointAddress];
+}
+
+- (void)objPointAddress{
+    User *user = [User new];   // user是User类型的指针变量
+    user.name = @"name";
+    NSLog(@" 一级指针获取对象: %@ \n 一级指针内存地址: %p \n ",user , user );
+    
+
+    
+    int a = 10;    //声明一个int变量a
+//    int* p = 1;   //这样不行，因为int* 只能保持地址
+//    int* p = a ;
+    int* p = &a ;   //声明一个int型的指针变量 p 通过&取a的地址 然后赋值给p
+    *p = 20;        //改变地址下的值
+    
+    NSLog(@" a : %d  %p\n", a, p);
+}
+
+- (void)arrayRetainObj{
+    
+    /* 一般数组对对象持有是强引用，对象无法被释放,直到数组本身被释放
+     * 可以使用NSValue 的valueWithNonretainedObject 对对象进行弱引用，再放到数组当中
+     * 或者使用NSPointArray 来保存
+     */
+
+    User *user = [User new];
+    user.name = @"name";
+    ary = [NSArray arrayWithObject:user];
+    TLog(user);
+    NSLog(@"retain : %@", [user valueForKey:@"retainCount"]);
+    
+    NSValue *value = [NSValue valueWithNonretainedObject:user];
+    ary = [NSArray arrayWithObject:value];
+    user = nil;
+    user = ary[0];   //此时ary内的user是野指针
+//    user.name = @"newname";
+    NSLog(@" user = %@", user);
+    
+    
+    User *user2 = [[User alloc] init];
+    WeakMutableArray *weakAry = [[WeakMutableArray alloc] init];
+    [weakAry addObject:user2];
+    NSLog(@" weakAry obj : %@", [weakAry objectAtWeakArrayIndex:0]);
+//    user2 = nil;
+    id obj = [weakAry objectAtWeakArrayIndex:0] ;   //这里相当于2个指针都指向user2对象
+    obj = nil;
+    NSLog(@" weakAry %ld  %ld ",(long)weakAry.allCount , (long)weakAry.useableCount);
+    TLog(user2);
+}
+
+- (void)testWeakRelease{
+    
+    // __strong 和 __weak 强弱引用的区别
+    __strong NSObject *obj = [[NSObject alloc] init];
+    //    __strong NSObject *obj1 = obj;
+    __weak NSObject *obj2 = obj;
+    obj = nil;
+    //    NSLog(@" %@ %@ ", obj  ,obj1);
+    NSLog(@" %@ %@ ", obj  ,obj2);
 }
 
 - (void)autoreleasePool{
@@ -63,7 +133,8 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
+    RetainCount(weak_string)
+    RetainCount(weak_auto_string)
     NSLog(@" __weak string did appear : %@ , %@ ,%@  ", weak_string , weak_auto_string ,weak_string2);
 }
 
