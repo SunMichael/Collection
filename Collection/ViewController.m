@@ -22,7 +22,13 @@
 {
     NSArray *ary;
     NSArray *vcAry;
+<<<<<<< Updated upstream
     NSString *name;
+=======
+    
+    NSString *string;
+    NSMutableString *mstring;
+>>>>>>> Stashed changes
 }
 @end
 
@@ -45,6 +51,13 @@
     self.title = @"target test";
 #endif
     
+<<<<<<< Updated upstream
+=======
+    string = @"string";
+    mstring = [[NSMutableString alloc] initWithString:@"mstring"];
+//    NSCache *cache = [[NSCache alloc]init];
+//    cache setObject:<#(nonnull id)#> forKey:<#(nonnull id)#>
+>>>>>>> Stashed changes
 }
 
 
@@ -71,13 +84,30 @@
     vc.title = ary[indexPath.row];
     if ([vc  isKindOfClass:[PropertyController class]]) {
         PropertyController *pc = (PropertyController *)vc;
+<<<<<<< Updated upstream
         pc.name = name;
         name = @"newname";
+=======
+        pc.ary = [NSMutableArray arrayWithObjects:@"b",@"c",nil];
+//        pc.author = [[NSString alloc] init];
+//        pc.unsafeAry = [[NSMutableArray alloc] init];
+    }else if ([vc isKindOfClass:[CopyController class]]) {
+        CopyController *copy = (CopyController *)vc;
+        copy.cString = string;
+        copy.sString = string;
+        copy.cmString = mstring;
+        copy.smString = mstring;
+        
+        copy.cAry = ary;
+        copy.sAry = ary;
+>>>>>>> Stashed changes
     }
+    
     [self.navigationController pushViewController:vc animated:YES];
 
 }
 
+<<<<<<< Updated upstream
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40.f;
 }
@@ -85,6 +115,11 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     NSLog(@" name %@ , %p " ,name ,name);
+=======
+
+- (void)viewDidAppear:(BOOL)animated{
+    NSLog(@" %p , %p ", string ,mstring);
+>>>>>>> Stashed changes
 }
 
 @end

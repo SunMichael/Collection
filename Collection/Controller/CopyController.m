@@ -25,6 +25,17 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    NSLog(@"--- %p , %p ,%p ,%p ",_cString ,_sString , _cmString ,_smString);
+    
+    _cString = @"newCopyString";
+    _sString = @"newStrongString";
+    
+//    [_cmString replaceCharactersInRange:NSMakeRange(0, 3) withString:@"new"];
+    [_smString replaceCharactersInRange:NSMakeRange(0, 3) withString:@"new"];
+    
+    NSLog(@"--- %p , %p ,%p ,%p ",_cString ,_sString , _cmString ,_smString);
+    
+    
     
 //    [self aryCopyMethod];
 //    [self maryCopyMethod];
@@ -133,12 +144,18 @@
     NSString *string = @"a";
     NSString *string2 = string;
     NSLog(@" %p , %p ",string ,string2);
+<<<<<<< Updated upstream
     string = nil;
     NSLog(@" %@ , %p ",[string stringByAppendingString:@"x"] ,[string2 stringByAppendingString:@"a"]);
     
     
     
     
+=======
+    string = @"b";
+    NSLog(@" %p , %p ",string ,string2);
+//    NSLog(@" %@ , %p ",[string stringByAppendingString:@"x"] ,[string2 stringByAppendingString:@"a"]);
+>>>>>>> Stashed changes
 }
 
 /*
